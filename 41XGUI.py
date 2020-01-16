@@ -11,12 +11,12 @@ matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
+env = input('Input folder where data files are stored: ')
 
-
-files = glob.glob('C:/Users/Mark/Documents/*.csv')
+files = glob.glob(env + '/*.csv')
 numSessions = len(files)
 
-with open('C:/Users/Mark/Documents/raw.csv', 'r') as raw:
+with open(env + '/raw.csv', 'r') as raw:
   rawplotdata = csv.reader(raw, delimiter=',')
   rawdata = []
   rawdatatimepoints = []
@@ -27,7 +27,7 @@ with open('C:/Users/Mark/Documents/raw.csv', 'r') as raw:
     rawdata.append(float(raw))
     rawdatatimepoints.append(float(rawtp))
     
-with open('C:/Users/Mark/Documents/rectified.csv', 'r') as rectified:
+with open(env + '/rectified.csv', 'r') as rectified:
   rectifiedplotdata = csv.reader(rectified, delimiter=',')
   rectifieddata = []
   rectifieddatatimepoints = []
@@ -38,7 +38,7 @@ with open('C:/Users/Mark/Documents/rectified.csv', 'r') as rectified:
     rectifieddata.append(float(rectified))
     rectifieddatatimepoints.append(float(rectifiedtp))
 
-with open('C:/Users/Mark/Documents/enveloped.csv', 'r') as env:
+with open(env + '/enveloped.csv', 'r') as env:
   envplotdata = csv.reader(env, delimiter=',')
   envdata = []
   envdatatimepoints = []
@@ -49,7 +49,7 @@ with open('C:/Users/Mark/Documents/enveloped.csv', 'r') as env:
     envdata.append(float(env))
     envdatatimepoints.append(float(envtp))
 
-with open('C:/Users/Mark/Documents/compare.csv', 'r') as comp:
+with open(env + '/compare.csv', 'r') as comp:
   compplotdata = csv.reader(comp, delimiter=',')
   compdata = []
   compdata2 = []
@@ -67,7 +67,7 @@ with open('C:/Users/Mark/Documents/compare.csv', 'r') as comp:
 
 for x in range (1, numSessions):
     print('Looking at file %d' % (x))
-    with open('C:/Users/Mark/Documents/test1.csv', 'r') as f:
+    with open(env + '/test1.csv', 'r') as f:
               data = csv.reader(f, delimiter=',')
               dates = []
               colors = []
